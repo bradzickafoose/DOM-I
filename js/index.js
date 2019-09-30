@@ -1,4 +1,4 @@
-const siteContent = {
+const siteContent = { 
   "nav": {
     "nav-item-1": "Services",
     "nav-item-2": "Product",
@@ -40,3 +40,84 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+//Option A:
+// let navItems = document.querySelectorAll('header nav a');
+
+// navItems[0].textContent = siteContent.nav["nav-item-1"];
+// navItems[1].textContent = siteContent.nav["nav-item-2"];
+// navItems[2].textContent = siteContent.nav["nav-item-3"];
+// navItems[3].textContent = siteContent.nav["nav-item-4"];
+// navItems[4].textContent = siteContent.nav["nav-item-5"];
+// navItems[5].textContent = siteContent.nav["nav-item-6"];
+
+//Option B:
+// let navLinks = document.getElementsByTagName('nav')[0].children;
+// for(let i = 0; i < navLinks.length; i++){
+//   navLinks[i].textContent = siteContent["nav"][`nav-item-${i+1}`];
+// }
+
+//Option C: 
+let navButtons = document.querySelectorAll("a");
+  navButtons.forEach((currentValue, index) => currentValue.textContent = siteContent.nav[`nav-item-${index + 1}`]);
+
+// CTA Heading
+let ctaHeading = document.querySelector(".cta-text h1");
+ctaHeading.textContent = siteContent.cta.h1
+
+// CTA Heading – Add new line
+ctaHeading.setAttribute('style', 'white-space: pre;');
+ctaHeading.textContent = siteContent["cta"]["h1"].split(" ").join("\n");
+
+// CTA Button
+let ctaButton = document.querySelector(".cta-text button");
+ctaButton.textContent = siteContent.cta.button;
+
+// CTA Image
+let ctaImg = document.querySelector("#cta-img");
+ctaImg.src = siteContent.cta["img-src"];
+
+
+let mainArray = ['features', 'about', 'services', 'product', 'vision'];
+
+// Main Content Headings
+let mainH4 = document.querySelectorAll('.text-content h4');
+mainH4.forEach((currentValue, index) => currentValue.textContent = siteContent["main-content"][`${mainArray[index]}-h4`])
+
+// Main Content Paragraphs
+let mainParagraph = document.querySelectorAll('.text-content p');
+mainParagraph.forEach((currentValue, index) => currentValue.textContent = siteContent["main-content"][`${mainArray[index]}-content`]);
+
+// Main Content Image
+let midImg = document.querySelector('#middle-img');
+midImg.src = siteContent["main-content"]["middle-img-src"];
+
+// Contact Heading
+let contactH4 = document.querySelector('.contact h4');
+contactH4.textContent = siteContent.contact["contact-h4"];
+
+let contactArray = ['address', 'phone', 'email'];
+
+// Contact Paragraphs
+let contactParagraph = document.querySelectorAll('.contact p');
+contactParagraph.forEach((currentValue, index) => currentValue.textContent = siteContent.contact[`${contactArray[index]}`]);
+
+// Footer Paragraph
+let footerParagraph = document.querySelector('footer p');
+footerParagraph.textContent = siteContent.footer.copyright;
+
+// Change the color of the navigation text to be green
+navButtons.forEach((element) => element.style.color = "green");
+
+// Add new items to the navigation system
+let firstNavLink = document.createElement('a');
+firstNavLink.textContent = 'Home';
+firstNavLink.style.color = 'green';
+
+let lastNavLink = document.createElement('a');
+lastNavLink.textContent = 'Subscribe';
+lastNavLink.style.color = 'green';
+
+let navBar = document.querySelector('nav');
+navBar.prepend(firstNavLink);
+navBar.appendChild(lastNavLink);
