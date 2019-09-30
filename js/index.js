@@ -121,3 +121,8 @@ lastNavLink.style.color = 'green';
 let navBar = document.querySelector('nav');
 navBar.prepend(firstNavLink);
 navBar.appendChild(lastNavLink);
+
+
+// Update styles throughout page
+let textContentClass = document.querySelectorAll('h4');
+textContentClass.forEach((element) => element.style.color = 'green');
